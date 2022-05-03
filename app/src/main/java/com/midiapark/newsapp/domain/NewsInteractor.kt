@@ -1,7 +1,8 @@
 package com.midiapark.newsapp.domain
 
-import com.midiapark.newsapp.data.newtwork.dto.NewsSearchResponse
+import com.midiapark.newsapp.entities.ArticleHeadline
+import kotlinx.coroutines.flow.Flow
 
 interface NewsInteractor {
-    suspend fun getSampleData(): NewsSearchResponse
+    suspend fun getTopHeadlines(): Flow<List<ArticleHeadline>>
 }

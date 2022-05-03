@@ -3,15 +3,23 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/background_image_button.xml" value="0.3035" />
+        <entry key="app/src/main/res/drawable/background_transparent_button.xml" value="0.3035" />
         <entry key="app/src/main/res/drawable/ic_home.xml" value="0.3035" />
         <entry key="app/src/main/res/drawable/ic_more.xml" value="0.3035" />
         <entry key="app/src/main/res/drawable/ic_news.xml" value="0.3035" />
+        <entry key="app/src/main/res/drawable/ic_order.xml" value="0.214" />
         <entry key="app/src/main/res/drawable/ic_profile.xml" value="0.3035" />
+        <entry key="app/src/main/res/layout/activity_article.xml" value="0.20677083333333332" />
+        <entry key="app/src/main/res/layout/fragment_search_filter.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_search_in.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_sort_by.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_tab_dumb.xml" value="0.39375" />
-        <entry key="app/src/main/res/layout/fragment_tab_news.xml" value="0.38656280428432327" />
-        <entry key="app/src/main/res/layout/fragment_tab_search.xml" value="0.39375" />
+        <entry key="app/src/main/res/layout/fragment_tab_news.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/fragment_tab_search.xml" value="0.25" />
         <entry key="app/src/main/res/layout/item_header.xml" value="0.20677083333333332" />
         <entry key="app/src/main/res/layout/item_headline.xml" value="0.11" />
+        <entry key="app/src/main/res/layout/item_search_history_item.xml" value="0.25" />
         <entry key="app/src/main/res/layout/main_activity.xml" value="0.39375" />
         <entry key="app/src/main/res/layout/main_fragment.xml" value="0.165" />
         <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.39375" />

@@ -3,12 +3,17 @@ package com.midiapark.newsapp.ui.screens.news
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
+import com.midiapark.newsapp.data.newtwork.dto.NewsResponse
 import com.midiapark.newsapp.databinding.FragmentTabNewsBinding
+import com.midiapark.newsapp.databinding.ItemHeadlineBinding
+import com.midiapark.newsapp.entities.ArticleHeadline
+import com.midiapark.newsapp.ui.article.ArticleActivity
 import com.midiapark.newsapp.ui.base.ViewBindingFragment
 import com.midiapark.newsapp.ui.screens.news.recycler.HeaderItem
 import com.midiapark.newsapp.ui.screens.news.recycler.HeadlineItem
 import com.mikepenz.fastadapter.FastAdapter
 import com.mikepenz.fastadapter.adapters.GenericItemAdapter
+import com.mikepenz.fastadapter.binding.listeners.addClickListener
 import com.mikepenz.fastadapter.diff.FastAdapterDiffUtil
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -30,6 +35,16 @@ class NewsTabFragment : ViewBindingFragment<FragmentTabNewsBinding>(FragmentTabN
         super.onViewCreated(view, savedInstanceState)
         viewSetup()
         subToLiveData()
+        setListeners()
+    }
+
+    private fun setListeners() {
+        mainAdapter.apply {
+            addClickListener({ b: ItemHeadlineBinding -> b.root }) { _, _, _, item ->
+                item as HeadlineItem
+                openArticle(item.model)
+            }
+        }
     }
 
     private fun viewSetup() {
@@ -39,10 +54,14 @@ class NewsTabFragment : ViewBindingFragment<FragmentTabNewsBinding>(FragmentTabN
     }
 
     private fun subToLiveData() {
-        viewModel.sampleData.observe(viewLifecycleOwner) {
+        viewModel.topHeadlines.observe(viewLifecycleOwner) {
             FastAdapterDiffUtil[newsAdapter] =
-                it.articles.map { headline -> HeadlineItem(headline) }
+                it.map { headline -> HeadlineItem(headline) }
         }
+    }
+
+    private fun openArticle(article: ArticleHeadline) {
+        startActivity(ArticleActivity.newIntent(requireActivity(), article))
     }
 
     companion object {

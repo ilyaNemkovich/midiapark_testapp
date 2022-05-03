@@ -6,10 +6,11 @@ import android.view.ViewGroup
 import coil.load
 import com.midiapark.newsapp.data.newtwork.dto.NewsResponse
 import com.midiapark.newsapp.databinding.ItemHeadlineBinding
+import com.midiapark.newsapp.entities.ArticleHeadline
 import com.mikepenz.fastadapter.binding.ModelAbstractBindingItem
 
-class HeadlineItem(item: NewsResponse) :
-    ModelAbstractBindingItem<NewsResponse, ItemHeadlineBinding>(item) {
+class HeadlineItem(item: ArticleHeadline) :
+    ModelAbstractBindingItem<ArticleHeadline, ItemHeadlineBinding>(item) {
 
     override val type: Int = 229
     override var identifier = item.hashCode().toLong()

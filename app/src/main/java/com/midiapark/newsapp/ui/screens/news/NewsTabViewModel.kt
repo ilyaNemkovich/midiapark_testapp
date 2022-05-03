@@ -4,9 +4,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.midiapark.newsapp.data.newtwork.dto.NewsSearchResponse
 import com.midiapark.newsapp.domain.NewsInteractor
+import com.midiapark.newsapp.entities.ArticleHeadline
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -15,12 +16,14 @@ class NewsTabViewModel @Inject constructor(
     private val newsInteractor: NewsInteractor
 ) : ViewModel() {
 
-    private val _sampleData = MutableLiveData<NewsSearchResponse>()
-    val sampleData: LiveData<NewsSearchResponse> = _sampleData
+    private val _topHeadlines = MutableLiveData<List<ArticleHeadline>>()
+    val topHeadlines: LiveData<List<ArticleHeadline>> = _topHeadlines
 
     init {
         viewModelScope.launch {
-            _sampleData.value = newsInteractor.getSampleData()
+            newsInteractor.getTopHeadlines().collect {
+                _topHeadlines.value = it
+            }
         }
     }
 }
